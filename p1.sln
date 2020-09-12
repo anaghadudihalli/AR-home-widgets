@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{36a7b18c-1c18-4bb5-4aaa-911e5d621131}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorMigrationScripts", "EditorMigrationScripts.csproj", "{c586a1d7-0290-b382-1e06-0ffeee0847c3}"
 EndProject
 Global
@@ -8,6 +10,8 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36a7b18c-1c18-4bb5-4aaa-911e5d621131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36a7b18c-1c18-4bb5-4aaa-911e5d621131}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{c586a1d7-0290-b382-1e06-0ffeee0847c3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{c586a1d7-0290-b382-1e06-0ffeee0847c3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection

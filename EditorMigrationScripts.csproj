@@ -233,11 +233,11 @@
     <Reference Include="UnityEditor.Android.Extensions">
         <HintPath>/Applications/Unity/Hub/Editor/2019.4.1f1/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Vuforia.UnityExtensions.Editor">
-        <HintPath>/Users/anagha/GoogleDrive/Work/Coursework/Sem3/CS428/Projects/p1/Library/PackageCache/com.ptc.vuforia.engine@9.4.6/Vuforia/Plugins/Managed/Editor/Vuforia.UnityExtensions.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Vuforia.UnityExtensions">
         <HintPath>/Users/anagha/GoogleDrive/Work/Coursework/Sem3/CS428/Projects/p1/Library/PackageCache/com.ptc.vuforia.engine@9.4.6/Vuforia/Plugins/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Vuforia.UnityExtensions.Editor">
+        <HintPath>/Users/anagha/GoogleDrive/Work/Coursework/Sem3/CS428/Projects/p1/Library/PackageCache/com.ptc.vuforia.engine@9.4.6/Vuforia/Plugins/Managed/Editor/Vuforia.UnityExtensions.Editor.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
         <HintPath>/Users/anagha/GoogleDrive/Work/Coursework/Sem3/CS428/Projects/p1/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
