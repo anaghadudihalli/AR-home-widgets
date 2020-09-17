@@ -9,6 +9,7 @@ public class getDate : MonoBehaviour
     public TextMeshPro dateTextObject;
     public TextMeshPro dayTextObject;
     public TextMeshPro monthYearTextObject;
+    public TextMeshPro fullDateTextObject;
     
     void Start()
     {
@@ -21,5 +22,6 @@ public class getDate : MonoBehaviour
         dateTextObject.GetComponent<TextMeshPro>().text = System.DateTime.Now.ToString("dd");
         dayTextObject.GetComponent<TextMeshPro>().text = System.DateTime.Now.ToString("dddd");
         monthYearTextObject.GetComponent<TextMeshPro>().text = System.DateTime.Now.ToString("MMMM, yyyy");
+        fullDateTextObject.GetComponent<TextMeshPro>().text = System.DateTime.Now.ToString("MM/dd/yyyy");
     }
 }
