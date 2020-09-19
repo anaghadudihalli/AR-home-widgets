@@ -34,7 +34,6 @@ public class changeUnits : MonoBehaviour
             isMetric = 0;
             buttonTextObject.GetComponent<TextMeshPro>().text = "Change to Metric Units";
         }
-
         getTimeObject.callUpdate();
         getDateObject.callUpdate();
         getWeatherObject.callUpdate();
