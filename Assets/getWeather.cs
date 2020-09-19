@@ -8,23 +8,37 @@ using Newtonsoft.Json.Linq;
 public class getWeather : MonoBehaviour
 {
     // Start is called before the first frame update
-    string url_imperial = "http://api.openweathermap.org/data/2.5/weather?lat=41.88&lon=-87.6&APPID=ee20a9afd0989739bce46c9b270b0151&units=imperial";
-    string url_metric = "http://api.openweathermap.org/data/2.5/weather?lat=41.88&lon=-87.6&APPID=ee20a9afd0989739bce46c9b270b0151&units=metric";
+    string urlImperial = "http://api.openweathermap.org/data/2.5/weather?lat=41.88&lon=-87.6&APPID=ee20a9afd0989739bce46c9b270b0151&units=imperial";
+    string urlMetric = "http://api.openweathermap.org/data/2.5/weather?lat=41.88&lon=-87.6&APPID=ee20a9afd0989739bce46c9b270b0151&units=metric";
+    string url = "";
+    string temperatureUnit = "";
+    string windSpeedUnit = "";
     public TextMeshPro tempTextObject;
     public TextMeshPro humidityTextObject;
     public TextMeshPro windTextObject;
+    public int getUnits;
     void Start()
     {
-        InvokeRepeating("GetDataFromWeb", 2f, 900f);
+        InvokeRepeating("GetDataFromWeb", 0f, 30f);
     }
 
+    public void callUpdate() {
+        GetDataFromWeb();
+    }
     // Update is called once per frame
     void GetDataFromWeb()
    {
-       StartCoroutine(GetRequest(url_imperial));
+        getUnits = changeUnits.isMetric;
+        if (getUnits == 1){
+            url = urlMetric;
+        }
+        else {
+            url = urlImperial;
+        }
+        StartCoroutine(GetRequest(url, getUnits));
    }
 
-    IEnumerator GetRequest(string uri)
+    IEnumerator GetRequest(string uri, int getUnits)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
@@ -39,9 +53,16 @@ public class getWeather : MonoBehaviour
             {
                 // print out the weather data to make sure it makes sense
                 Debug.Log(":\nReceived: " + webRequest.downloadHandler.text);
-
+                if (getUnits == 1){
+                    temperatureUnit = "C";
+                    windSpeedUnit = "m/s";
+                }
+                else {
+                    temperatureUnit = "F";
+                    windSpeedUnit = "mi/h";
+                }
                 var results = JObject.Parse(webRequest.downloadHandler.text);
-                tempTextObject.GetComponent<TextMeshPro>().text = (string)results["main"]["temp"] + " F";
+                tempTextObject.GetComponent<TextMeshPro>().text = (string)results["main"]["temp"] + " " + temperatureUnit;
                 humidityTextObject.GetComponent<TextMeshPro>().text = (string)results["main"]["humidity"] + " %";
                 int windSpeed = (int)results["wind"]["speed"];
                 int windDeg = (int)results["wind"]["deg"];
@@ -80,7 +101,7 @@ public class getWeather : MonoBehaviour
                 } else if(windDeg > 327 && windDeg < 348) {
                     windDirection = "NNW";
                 }
-                windTextObject.GetComponent<TextMeshPro>().text = windSpeed.ToString() + " mph " + windDirection;
+                windTextObject.GetComponent<TextMeshPro>().text = windSpeed.ToString() + " " + windSpeedUnit + " " + windDirection;
             }
         }
     }

@@ -11,6 +11,7 @@ public class changeUnits : MonoBehaviour
     // Start is called before the first frame update
     public getTime getTimeObject; 
     public getDate getDateObject;
+    public getWeather getWeatherObject;
     public GameObject buttonObject;
     public GameObject buttonTextObject;
     public static int isMetric; 
@@ -28,16 +29,15 @@ public class changeUnits : MonoBehaviour
         if (isMetric == 0) {
             isMetric = 1;
             buttonTextObject.GetComponent<TextMeshPro>().text = "Change to Imperial Units";
-            getTimeObject.callUpdate();
-            getDateObject.callUpdate();
         }
         else {
             isMetric = 0;
             buttonTextObject.GetComponent<TextMeshPro>().text = "Change to Metric Units";
-            getTimeObject.callUpdate();
-            getDateObject.callUpdate();
         }
-        
+
+        getTimeObject.callUpdate();
+        getDateObject.callUpdate();
+        getWeatherObject.callUpdate();
     }
 
     public void OnButtonReleased(VirtualButtonBehaviour vb)
