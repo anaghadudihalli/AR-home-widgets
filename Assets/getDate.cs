@@ -10,10 +10,17 @@ public class getDate : MonoBehaviour
     public TextMeshPro dayTextObject;
     public TextMeshPro monthYearTextObject;
     public TextMeshPro fullDateTextObject;
+    public string formattedString;
+    public int getUnits;
     
     void Start()
     {
         InvokeRepeating("UpdateDate", 0f, 30f);
+    }
+
+    public void callUpdate() 
+    {
+        UpdateDate();
     }
 
     // Update is called once per frame
@@ -22,6 +29,13 @@ public class getDate : MonoBehaviour
         dateTextObject.GetComponent<TextMeshPro>().text = System.DateTime.Now.ToString("dd");
         dayTextObject.GetComponent<TextMeshPro>().text = System.DateTime.Now.ToString("dddd");
         monthYearTextObject.GetComponent<TextMeshPro>().text = System.DateTime.Now.ToString("MMMM, yyyy");
-        fullDateTextObject.GetComponent<TextMeshPro>().text = System.DateTime.Now.ToString("MM/dd/yyyy");
+        getUnits = changeUnits.isMetric;
+        if (getUnits == 1) {
+            formattedString = "dd/MM/yyyy";
+        }
+        else {
+            formattedString = "MM/dd/yyyy";
+        }
+        fullDateTextObject.GetComponent<TextMeshPro>().text = System.DateTime.Now.ToString(formattedString);
     }
 }
