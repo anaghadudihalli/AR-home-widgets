@@ -17,6 +17,8 @@ public class getWeather : MonoBehaviour
     public TextMeshPro humidityTextObject;
     public TextMeshPro windTextObject;
     public int getUnits;
+    public static int condition;
+    public string tempCondition;
     void Start()
     {
         InvokeRepeating("GetDataFromWeb", 0f, 30f);
@@ -66,6 +68,34 @@ public class getWeather : MonoBehaviour
                 humidityTextObject.GetComponent<TextMeshPro>().text = (string)results["main"]["humidity"] + " %";
                 int windSpeed = (int)results["wind"]["speed"];
                 int windDeg = (int)results["wind"]["deg"];
+                tempCondition = (string)results["weather"][0]["id"];
+                if(tempCondition == "800"){
+                    condition = 1; // clear
+                } else if(tempCondition == "801") {
+                    condition = 2; //few clouds
+                }
+                else if(tempCondition == "802") {
+                    condition = 3; // scattered clouds
+                }
+                else if(tempCondition == "803" || tempCondition == "804") {
+                    condition = 4; // broken cluouds
+                }
+                else if(tempCondition == "520" || tempCondition == "521" || tempCondition == "522" || tempCondition == "531" || tempCondition.StartsWith("3")) {
+                    condition = 5; // shower rain
+                }
+                else if(tempCondition == "500" || tempCondition == "501" || tempCondition == "502" || tempCondition == "503" || tempCondition == "504") {
+                    condition = 6; // rain
+                }
+                else if(tempCondition.StartsWith("2")) {
+                    condition = 7; //thunderstorms
+                }
+                else if(tempCondition.StartsWith("7")) {
+                    condition = 8; //mist
+                }
+                else if(tempCondition.StartsWith("6") || tempCondition == "511") {
+                    condition = 9; //snow
+                }
+                
                 string windDirection = "";
 
                 if (windDeg > 349 && windDeg < 11) {
